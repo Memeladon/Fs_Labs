@@ -1,6 +1,6 @@
 ﻿open System
 
-let processAnswer  QandA = 
+let Answer  QandA = 
     match QandA with
         |"Prolog"|"F#"-> "Well, you sycophant!"
         |"Python" -> "And you are good!"
@@ -15,5 +15,5 @@ let processAnswer  QandA =
 let main argv =
     printf "Which programming language do you like the most?: " 
     let QandA = Console.ReadLine()
-    Console.WriteLine(processAnswer QandA)
+    Console.WriteLine(Answer QandA)
     0
