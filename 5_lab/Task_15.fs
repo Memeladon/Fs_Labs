@@ -10,7 +10,7 @@
         GreatestCommonDivisor nextX nextY
 
 
-let roundPrime (n:int) func elementary = 
+let roundOff (n:int) func elementary = 
     let rec loop n func elementary exp =
         if exp <= 0 then elementary
         else
@@ -24,5 +24,5 @@ let roundPrime (n:int) func elementary =
 
 [<EntryPoint>]
 let main argv =       
-    printf "Sum of mutually prime numbers: %A" (roundPrime 5 (fun (x:int) (y:int) -> x + y) 0)
+    printf "Sum of mutually prime numbers: %A" (roundOff 5 (fun (x:int) (y:int) -> x + y) 0)
     0 
