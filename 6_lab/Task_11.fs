@@ -17,6 +17,6 @@ let rec WriteList list =
 [<EntryPoint>]
 let main argv = 
     printfn "Enter the number of list size: "
-    let list = (CreateList (Console.ReadLine() |> Int32.Parse)) (fun a b c -> a + b + c))
+    let list = (ListEdit (CreateList (Console.ReadLine() |> Int32.Parse)) (fun a b c -> a + b + c))
     WriteList list
     0
