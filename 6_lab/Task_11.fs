@@ -13,6 +13,19 @@ let rec WriteList list =
         printfn "%O" head
         writeList tail
     |[] -> ()
+    
+let ListEdit list func = 
+    let rec loop list func nextList = 
+        match list with
+        |slot1::tail ->
+            let slot2 = if tail <> [] then tail.Head else 1
+            let slot3 = if tail <> [] then (if tail.Tail <> [] then tail.Tail.Head else 1) else 1
+            let ReceivingFunc = func slot1 slot2 slot3
+            let nextNextList = nextList @ [ReceivingFunc]
+            let editedList =  if tail <> [] then (if tail.Tail <> [] then tail.Tail.Tail else []) else []
+            loop editedList func nextNextList
+        |[] -> nextList
+    loop list func []
 
 [<EntryPoint>]
 let main argv = 
