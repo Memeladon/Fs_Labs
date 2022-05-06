@@ -1,13 +1,13 @@
 ﻿open System
 
-let counter list el =
+let counter list element =
     let rec subCounter list element count  =
         match list with
         | [] -> count
         | head::tail ->
             let newCount = if (head = element) then count + 1 else count
             subCounter tail element newCount
-    subCounter list el 0
+    subCounter list element 0
 
 let findFunc list =
     let rec subFunc list primalList element =
