@@ -1,13 +1,13 @@
 open System
 
-let rec CreateList size = 
+let rec createList size = 
     if size <= 0 then []
     else 
         let head = Console.ReadLine() |> Int32.Parse
         let tail = createList (size - 1)
         head::tail
 
-let rec WriteList list = 
+let rec writeList list = 
     match list with
     |head::tail ->
         printfn "%O" head
@@ -30,6 +30,6 @@ let ListEdit list func =
 [<EntryPoint>]
 let main argv = 
     printfn "Enter the number of list size: "
-    let list = (ListEdit (CreateList (Console.ReadLine() |> Int32.Parse)) (fun a b c -> a + b + c))
-    WriteList list
+    let list = (ListEdit (createList (Console.ReadLine() |> Int32.Parse)) (fun a b c -> a + b + c))
+    writeList list
     0
