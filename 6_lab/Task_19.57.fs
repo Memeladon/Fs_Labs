@@ -1,3 +1,4 @@
+//57      countItemsGreaterThanSumOfPrevious [1;2;4;8;16]
 let countItemsGreaterThanSumOfPrevious (list:List<int>) =
     let rec loop list sum count =
         match list with
@@ -7,7 +8,3 @@ let countItemsGreaterThanSumOfPrevious (list:List<int>) =
             loop tail nextSum nextCount
         |[] -> count
     loop list.Tail list.Head 0
-
-let Demo = 
-    printfn "%A" (countItemsGreaterThanSumOfPrevious [1;2;4;8;16;32;64;128;256])
-    0
