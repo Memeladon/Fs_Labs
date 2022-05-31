@@ -1,25 +1,28 @@
-open System
-open System.Diagnostics
-
-let listening list1 list2 =
-    let rec subFunc list1 list2 counter =
-        match list1 with
-        |head::tail -> 
-            let rec subSubFunc list item count =
+//10.1
+let memberList item list = 
+    let rec loop item list flag=
                 match list with
-                |h::t ->
-                    let nextCount = if (item = h) then count + 1 else count
-                    subSubFunc t item nextCount
-                |[] -> count     
-            let nextCounter = subSubFunc list2 head 0
-            subFunc tail list2 nextCounter
-        |[] -> counter
-    subFunc list1 list2 0
+                |h::t -> 
+                    let nextFlag = if item = h then true else false
+                    if nextFlag then (loop item [] nextFlag) else loop item t nextFlag
+                |[]-> flag
+    loop item list false
 
-[<EntryPoint>]
-let main argv =
+let firstFindMatching list list2 = 
+    let rec loop list list2 count = 
+        match list with
+        |head::tail ->          
+            let nextCount = count + (if memberList head list2 then 1 else 0)
+            loop tail list2 nextCount
+        |[] -> count
+    loop list list2 0
 
-    let list1 = [7;9;7;7;9;7;7;7]
-    let list2 = [5;6;3;1;8;7;0;0]
-    printfn "different element: %d" (listening list1 list2)
-    0
+//10.2
+let secondFindMatching list (list2:List<int>) =
+    let rec loop list  (list2:List<int>) count =
+        match list with
+        |head::tail ->
+            let nextCount = count + (if head = list2.Head then 1 else 0)
+            loop tail list2.Tail nextCount
+        |[] -> count
+    loop list list2 0
