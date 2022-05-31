@@ -1,0 +1,8 @@
+let areAlternated list =
+    let rec loop list flag=
+        match list with
+        |head::tail ->
+            let nextFlag = if tail <> [] then (if head * tail.Head >= 0 then false else flag) else flag
+            loop tail nextFlag
+        |[] -> flag
+    loop list true
